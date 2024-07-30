@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Form Barang Keluar{% endblock %}
+
+{% block body %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <h1>Form Barang Keluar</h1>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        {% if form.vars.value.idKeluar is defined %}
+                            <h4>Edit Barang Keluar</h4>
+                        {% else %}
+                            <h4>Tambah Barang Keluar</h4>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form, {'attr': {'class': 'custom-form-class'}}) }}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                {% if app.session.flashBag.has('success') %}
+                                    <div class="alert alert-success">
+                                        {{ app.session.flashBag.get('success')[0] }}
+                                    </div>
+                                {% endif %}
+                                {% if app.session.flashBag.has('error') %}
+                                    <div class="alert alert-danger">
+                                        {{ app.session.flashBag.get('error')[0] }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Nama Barang</label>
+                                    {{ form_widget(form.id_barang) }}
+                                    {{ form_errors(form.id_barang) }}
+                                </div>
+                                <div class="form-group">
+                                    <label>Jumlah Keluar</label>
+                                    {{ form_widget(form.jml_keluar) }}
+                                    {{ form_errors(form.jml_keluar) }}
+                                </div>
+                                <div class="form-group">
+                                    <label>Deskripsi</label>
+                                    {{ form_widget(form.deskripsi) }}
+                                    {{ form_errors(form.deskripsi) }}
+                                </div>
+                                <div class="form-group text-right">
+                                    <button class="btn btn-info mr-1" type="submit">Simpan</button>
+                                    <a href="{{ path('app_barang_keluar_index') }}">
+                                        <button type="button" class="btn btn-danger" name="batal">Kembali</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

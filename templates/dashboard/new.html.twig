@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Barang{% endblock %}
+
+{% block body %}
+    {{ include('layouts/header.html.twig')  }}
+    {{ include('layouts/navigation.html.twig') }}
+
+    {{ include('dashboard/_form.html.twig') }}
+
+    {{ include('layouts/footer.html.twig') }}
+    
+{% endblock %}

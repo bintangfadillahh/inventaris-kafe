@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+	<div id="app">
+		<section class="section">
+			<div class="container mt-2">
+				<div class="row">
+					<div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+						<div class="login-brand"><img src="{{ asset('images/logo.png') }}" style="width: 50px;">
+							Inventaris</div>
+						<div class="card card-primary">
+							<div class="card-header">
+								<h4>Login</h4>
+							</div>
+
+
+							<div class="card-body">
+								<div class="form-group">
+									<label for="username">Username</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<div class="input-group-text">@</div>
+										</div>
+										<input type="text" class="form-control" name="username" tabindex="1" required autofocus>
+										<div class="invalid-feedback">
+											Username tidak boleh Kosong!
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="password" class="control-label">Password</label>
+									<input type="password" class="form-control" name="password" tabindex="2" required>
+									<div class="invalid-feedback">
+										Password tidak boleh Kosong!
+									</div>
+								</div>
+
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+										Login
+									</button>
+								</div>
+							</form>
+
+						</div>
+					</div>
+					<!-- <div class="mt-5 text-muted text-center">
+															              Belum Punya Akun? <a href="#">Contact Admin</a>
+															            </div> -->
+					<div class="simple-footer">
+						Copyright &copy; 2024
+						<div class="bullet"></div>
+						By Kafe Kopi Kampung Ambarukmo Yogyakarta
+					</div>
+				</div>
+
+				<!-- <div class="col-lg-3">
+												            <h2>Login</h2>
+												            <ul>
+												              <li>
+												                <b>Level: admin</b> <br>
+												                Username: admin<br>
+												                Pass: admin<br>
+												              </li>
+												              <li>
+												                <b>Level: manajemen</b> <br>
+												                Username: manajemen<br>
+												                Pass: manajemen<br>
+												              </li>
+												              <li>
+												                <b>Level: peminjam</b> <br>
+												                Username: peminjam1<br>
+												                Pass: peminjam1<br>
+												              </li>
+												              <li>
+												                <b>Level: peminjam</b> <br>
+												                Username: peminjam2<br>
+												                Pass: peminjam2<br>
+												              </li>
+												            </ul>
+												          </div> -->
+
+			</div>
+		</div>
+	</section>
+</div>
+{% endblock %}

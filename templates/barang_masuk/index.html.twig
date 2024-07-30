@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BarangMasuk index{% endblock %}
+
+{% block body %}
+    <h1>BarangMasuk index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id_masuk</th>
+                <th>Id_barang</th>
+                <th>Tgl_masuk</th>
+                <th>Spesifikasi</th>
+                <th>Kondisi</th>
+                <th>Jml_masuk</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for barang_masuk in barang_masuks %}
+            <tr>
+                {# <td>{{ barang_masuk.id_masuk }}</td> #}
+                {# <td>{{ barang_masuk.idBarang }}</td> #}
+                <td>{{ barang_masuk.tglMasuk ? barang_masuk.tglMasuk|date('Y-m-d') : '' }}</td>
+                <td>{{ barang_masuk.spesifikasi }}</td>
+                <td>{{ barang_masuk.kondisi }}</td>
+                <td>{{ barang_masuk.jmlMasuk }}</td>
+                <td>
+                    <a href="{{ path('app_barang_masuk_show', {'id_masuk': barang_masuk.id}) }}">show</a>
+                    <a href="{{ path('app_barang_masuk_edit', {'id_masuk': barang_masuk.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_barang_masuk_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Barang index{% endblock %}
+
+{% block body %}
+    {{ include('layouts/header.html.twig') }}
+    {{ include('layouts/navigation.html.twig') }}
+    <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Barang List</h1>
+          </div>
+
+          <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Stok Barang</h4>
+                      <div class="card-header-action"><a href="{{ path('app_dashboard_new') }}"><button class="btn btn-lg btn-info" type="submit"><i class="fas fa-plus"></i> Tambah Baru</button></a></div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="table-1">
+                        <thead>
+                          <tr>
+                            <th class="text-center">No</th>
+                            <th>Nama Barang</th>
+                            <th>Jumlah Masuk</th>
+                            <th>action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% set counter = 1 %}
+                        {% for barang in barangs %}
+                          <tr>
+                            <td class="text-center">{{ counter }}</td>
+                            {% set counter = counter + 1 %}
+                            <td>
+                                <span class="text-capitalize">{{ barang.barang.namaBarang }}</span>
+                            </td>
+                            <td><div class="badge badge-light">{{ barang.jmlMasuk }}</div></td>
+                            <td>
+                               <a href="{{ path('app_dashboard_edit', {'id_barang': barang.id}) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+    {{ include('layouts/footer.html.twig') }}
+{% endblock %}

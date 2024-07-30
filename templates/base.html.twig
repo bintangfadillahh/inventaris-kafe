@@ -2,7 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Inventaris{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('modules/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('modules/fontawesome/css/all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+        <link rel="stylesheet" href="{{ asset('modules/datatables/datatables.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('modules/select2/dist/css/select2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('modules/bootstrap-daterangepicker/daterangepicker.css') }}">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         {% endblock %}
@@ -13,5 +22,27 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+        <script src="{{ asset('modules/jquery.min.js') }}"></script>
+        <script src="{{ asset('modules/popper.js') }}"></script>
+        <script src="{{ asset('modules//tooltip.js') }}/"></script>
+        <script src="{{ asset('modules/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('modules/nicescroll/jquery.nicescroll.min.js') }} "></script>
+        <script src="{{ asset('modules/moment.min.js') }}"></script>
+        <script src="{{ asset('js/stisla.js') }}"></script>
+
+        <!-- JS Libraies -->
+        <script src="{{ asset('modules/datatables/datatables.min.js') }}"></script>
+        <script src="{{ asset('modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
+        <script src="{{ asset('modules/select2/dist/js/select2.full.min.js') }}"></script>
+        <script src="{{ asset('modules/jquery-ui/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+        <!-- Page Specific JS File -->
+        <script src="{{asset('js/page/modules-datatables.js') }}"></script>
+
+        <!-- Template JS File -->
+        <script src="{{ asset('js/scripts.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
     </body>
 </html>

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <h1>{{ barang.idBarang ? 'Edit Barang' : 'Tambah Barang' }}</h1>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>{{ barang.idBarang ? 'Edit Barang' : 'Tambah Barang' }}</h4>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                        {{ form_widget(form.nama_barang, { 'attr': {'class': 'form-control'} }) }}
+                        <div class="form-group text-right">
+                            {% if barang.idBarang %}
+                            {{ form_widget(form.save_and_continue) }}
+                            {% else %}
+                            {{ form_widget(form.save) }}
+                            {% endif %}
+                            <a href="{{ path('app_dashboard_index') }}">
+                                <button type="button" class="btn btn-danger">Kembali</button>
+                            </a>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

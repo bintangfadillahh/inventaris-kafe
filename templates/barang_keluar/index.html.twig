@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BarangKeluar index{% endblock %}
+
+{% block body %}
+    {# <h1>BarangKeluar index</h1> #}
+
+    {# <table class="table">
+        <thead>
+            <tr>
+                <th>Id_keluar</th>
+                <th>Id_barang</th>
+                <th>Tgl_keluar</th>
+                <th>Jml_keluar</th>
+                <th>Deskripsi</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for barang_keluar in barang_keluars %}
+            <tr>
+                <td>{{ barang_keluar.idKeluar }}</td>
+                <td>{{ barang_keluar.idBarang }}</td>
+                <td>{{ barang_keluar.tglKeluar ? barang_keluar.tglKeluar|date('Y-m-d') : '' }}</td>
+                <td>{{ barang_keluar.jmlKeluar }}</td>
+                <td>{{ barang_keluar.deskripsi }}</td>
+                <td>
+                    <a href="{{ path('app_barang_keluar_show', {'id_keluar': barang_keluar.id_keluar}) }}">show</a>
+                    <a href="{{ path('app_barang_keluar_edit', {'id_keluar': barang_keluar.id_keluar}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> #}
+    {{ include('layouts/header.html.twig') }}
+    {{ include('layouts/navigation.html.twig') }}
+
+     	<!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Daftar Barang Keluar</h1>
+          </div>
+          
+          <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Barang Keluar</h4>
+                      <div class="card-header-action"><a href="{{ path('app_barang_keluar_new') }}"><button class="btn btn-lg btn-info" type="submit"><i class="fas fa-plus"></i> Tambah Baru</button></a></div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="table-1">
+                        <thead>                                 
+                          <tr>
+                            <th class="text-center">No</th>
+                            <th>Nama Barang</th>
+                            <th>Jumlah Keluar</th>
+                            <th>deskripsi</th>
+                            <th>Tanggal Keluar</th>
+                            <th>action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% set counter = 1 %}
+                          {% for barang_keluar in barang_keluars %}
+                          <tr>
+                            <td class="text-center">{{ counter }}</td>
+                            {% set counter = counter + 1 %}
+                            <td>
+                                <span class="text-capitalize">{{ barang_keluar.barang.namaBarang }}</span>
+                                 <div class="table-links">
+                                  <a href="<?php echo site_url('barang_keluar/ubah/'.$data->id_keluar);?>"><span class="badge badge-primary">Edit <i class="fas fa-pencil-alt"></i></span></a>
+                                </div>
+                            </td>
+                            <td><div class="badge badge-light">{{ barang_keluar.jmlKeluar }}</div></td>
+                            <td>{{ barang_keluar.deskripsi }}</td>
+                            <td><div class="badge badge-light">{{ barang_keluar.tglKeluar ? barang_keluar.tglKeluar|date('Y-m-d') : 'N/A' }}</div></td>
+                            <td>
+                               <a href="<?php echo site_url('barang_keluar/ubah/'.$data->id_keluar);?>" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                               <a href="<?= site_url('barang_keluar/hapus/'.$data->id_keluar); ?>" class="btn btn-danger btn-action" onclick="return confirm('Yakin Hapus barang?')" data-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i></a>
+                            </td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+
+    {# <a href="{{ path('app_barang_keluar_new') }}">Create new</a> #}
+    {{ include('layouts/footer.html.twig') }}
+{% endblock %}

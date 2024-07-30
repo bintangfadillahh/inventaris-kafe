@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BarangKeluar{% endblock %}
+
+{% block body %}
+    {{ include('layouts/header.html.twig') }}
+    {{ include('layouts/navigation.html.twig') }}
+
+    {{ include('barang_keluar/_form.html.twig') }}
+
+    {{ include('layouts/footer.html.twig') }}
+
+    <a href="{{ path('app_barang_keluar_index') }}">back to list</a>
+{% endblock %}

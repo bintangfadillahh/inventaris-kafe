@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Barang index{% endblock %}
+
+{% block body %}
+    {# <h1>Barang index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id_barang</th>
+                <th>Nama_barang</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for barang in barangs %}
+            <tr>
+                <td>{{ barang.idBarang }}</td>
+                <td>{{ barang.namaBarang }}</td>
+                <td>
+                    <a href="{{ path('app_dashboard_show', {'id_barang': barang.idBarang}) }}">show</a>
+                    <a href="{{ path('app_dashboard_edit', {'id_barang': barang.idBarang}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> #}
+    {{ include('layouts/header.html.twig') }}
+    {{ include('layouts/navigation.html.twig') }}
+    <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Dashboard</h1>
+          </div>
+
+        <?php if ($level->level == 'administrator'): ?>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                  <i class="far fa-user"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total User</h4>
+                  </div>
+                  <div class="card-body"><?= $users; ?></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-archive"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Data Barang</h4>
+                  </div>
+                  <div class="card-body"><?= $barangs; ?></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <a href="<?php echo site_url('barang/tambahbarang/'); ?>"><button class="col-12 btn btn-lg btn-info mb-2" type="submit"><i class="fas fa-plus"></i> Barang Baru</button></a>
+            </div>
+          </div>
+        <?php elseif ($level->level == 'manajemen'): ?>
+          <div class="row">
+            <div class="col-lg-12 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-archive"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Data Barang</h4>
+                  </div>
+                  <div class="card-body"><?= $barangs; ?></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <a href="<?php echo site_url('barang/tambahbarang/'); ?>"><button class="col-12 btn btn-lg btn-info mb-2" type="submit"><i class="fas fa-plus"></i> Barang Baru</button></a>
+            </div>
+          </div>
+        <?php endif; ?>
+          <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Stok Barang</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="table-1">
+                        <thead>
+                          <tr>
+                            <th class="text-center">No</th>
+                            <th>Nama Barang</th>
+                            <th>Jumlah Masuk</th>
+                            <th>Jumlah Keluar</th>
+                            <th>Stok Barang</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% set counter = 1 %}
+                        {% for barang in barangs %}
+                            <tr>
+                                <td class="text-center">{{ counter }}</td>
+                                {% set counter = counter + 1 %}
+                                <td><span class="text-capitalize">{{ barang.namaBarang }}</span></td>
+                                {# <td>
+                                    <a href="{{ path('app_dashboard_show', {'id_barang': barang.idBarang}) }}">show</a>
+                                    <a href="{{ path('app_dashboard_edit', {'id_barang': barang.idBarang}) }}">edit</a>
+                                </td> #}
+                                <td>barang.jmlMasuk</td>
+                                <td>barang.jmlKeluar</td>
+                                <td><div class="badge badge-primary">10</div></td>
+                            </tr>
+                        {% endfor %}
+                 
+                          {# <tr>
+                            <td class="text-center"><?= $no++; ?></td>
+                            <td>
+                                <span class="text-capitalize"><?= $data->nama_barang; ?></span>
+                            </td>
+                            <td><?= $data->jml_masuk; ?></td>
+                            <td><?= $data->jml_keluar; ?></td>
+                            <td><div class="badge badge-primary"><?= $data->sisa_stok; ?></div></td>
+                          </tr> #}
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+    {{ include('layouts/footer.html.twig') }}
+
+
+    <a href="{{ path('app_dashboard_new') }}">Create new</a>
+{% endblock %}

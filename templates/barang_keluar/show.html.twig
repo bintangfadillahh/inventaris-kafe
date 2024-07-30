@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BarangKeluar{% endblock %}
+
+{% block body %}
+    <h1>BarangKeluar</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id_keluar</th>
+                <td>{{ barang_keluar.idKeluar }}</td>
+            </tr>
+            <tr>
+                <th>Id_barang</th>
+                <td>{{ barang_keluar.idBarang }}</td>
+            </tr>
+            <tr>
+                <th>Tgl_keluar</th>
+                <td>{{ barang_keluar.tglKeluar ? barang_keluar.tglKeluar|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Jml_keluar</th>
+                <td>{{ barang_keluar.jmlKeluar }}</td>
+            </tr>
+            <tr>
+                <th>Deskripsi</th>
+                <td>{{ barang_keluar.deskripsi }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_barang_keluar_index') }}">back to list</a>
+
+    <a href="{{ path('app_barang_keluar_edit', {'id_keluar': barang_keluar.id_keluar}) }}">edit</a>
+
+    {{ include('barang_keluar/_delete_form.html.twig') }}
+{% endblock %}
